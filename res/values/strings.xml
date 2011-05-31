@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, ViewFinderActivity!</string>
-    <string name="app_name">mo10073_prf</string>
+    <string name="app_name">Buscavistas Android mo10073</string>
+    <string name="label_menu_acerca">Acerca de...</string>
+    <string name="label_menu_prefs">Configuración</string>    
+    <string name="label_nombre">Alex Ortiz de Guinea</string>
+    <string name="label_mo_codigo">mo10073</string>
+    <string name="label_base_length_cat">Longitud focal base (mm)</string>
+    <string name="label_lengths_cat">Marcas a mostrar (mm)</string>
+    <string name="key_base_length">base_length_key</string>
+    <string name="key_lengths_one">length_one_key</string>
+    <string name="key_lengths_two">length_two_key</string>
+    <string name="key_lengths_three">length_three_key</string>
+    <string name="summary_base_length">La longitud focal base a la que es equivalente la cámara de su móvil (por ejemplo, en paso universal rondará los 35mm)</string>
+	<string name="summary_lengths">Longitudes focales de las marcas que se mostraran en pantalla.</string>
 </resources>
