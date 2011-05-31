@@ -26,4 +26,5 @@ public class ViewFinderOverlay extends View {
            canvas.drawText("Test Text", 10, 10, paint); 
            super.onDraw(canvas); 
    } 
+   
 }

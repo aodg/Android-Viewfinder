@@ -16,10 +16,15 @@ public class ViewFinderActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        mCameraPreview = this.findViewById(R.id.cameraPreview);
-        mViewFinderOverlay = this.findViewById(R.id.cameraOverlay);
+        mCameraPreview = (CameraPreview)this.findViewById(R.id.cameraPreview);
+        mViewFinderOverlay = (ViewFinderOverlay)this.findViewById(R.id.cameraOverlay);
     }
     
+	public void onPause()
+	{
+		super.onPause();
+	}
+	
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

@@ -7,6 +7,7 @@ import android.hardware.Camera;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.util.AttributeSet;
+import android.graphics.PixelFormat;
 
 class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
     SurfaceHolder mHolder;
@@ -27,8 +28,8 @@ public void mHolderInit()
 {	
 	// Nos registramos como callback para el surfaceHolder
 	mHolder = getHolder();
-	mHolder.addCallback(this);
 	mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+	mHolder.addCallback(this);
 }
 
 public void surfaceCreated(SurfaceHolder holder) {
@@ -36,24 +37,25 @@ public void surfaceCreated(SurfaceHolder holder) {
 	// Adquirimos la c‡mara y le decimos d—nde queremos que nos meta los datos (nena)
 	mCamera = Camera.open();
     try {
-       mCamera.setPreviewDisplay(holder);
-    } catch (IOException exception) {
+       mCamera.setPreviewDisplay(mHolder);
+    } catch (Throwable e) {
         mCamera.release();
         mCamera = null;
-        // TODO: Aqu’ deber’a haber l—gica de la c‡mara
+        // TODO aqu’ deber’a haber un Dialog que informe a la gente de que algo ha petado y mate la app
     }
 }
 
 public void surfaceDestroyed(SurfaceHolder holder) {
     // La superficie se va a destruir al volver, as’ que paramos la preview.
-	// CameraDevice no es compartido, as’ que es importnate liberarlo al pausar la actividad.
+	// CameraDevice no es compartido, as’ que es importante liberarlo al pausar la actividad.
     mCamera.stopPreview();
-    mCamera = null;
+    mCamera.release();
 }
 
 public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
     Camera.Parameters parameters = mCamera.getParameters();
     parameters.setPreviewSize(w, h);
+    parameters.setPictureFormat(PixelFormat.JPEG);
     mCamera.setParameters(parameters);
     mCamera.startPreview();
 }
