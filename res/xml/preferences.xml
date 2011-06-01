@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 	<EditTextPreference android:key="@string/key_base_length"
-		android:defaultValue="35" android:dialogTitle="@string/label_base_length_cat" android:summary="@string/summary_base_length"
-		android:title="@string/label_base_length_cat" android:numeric="integer"></EditTextPreference>
-	
+		android:defaultValue="35" android:dialogTitle="@string/label_base_length_cat"
+		android:summary="@string/summary_base_length" android:title="@string/label_base_length_cat"
+		android:numeric="integer"></EditTextPreference>
+
 	<PreferenceCategory android:title="@string/label_lengths_cat"
-		android:summary="@string/summary_lengths"><EditTextPreference android:dialogTitle="@string/label_lengths_cat" android:key="@string/key_lengths_one" android:defaultValue="50" android:title="@string/label_lengths_cat" android:summary="@string/summary_lengths"></EditTextPreference><EditTextPreference android:dialogTitle="@string/label_lengths_cat" android:key="@string/key_lengths_two" android:defaultValue="90" android:title="@string/label_lengths_cat" android:summary="@string/summary_lengths"></EditTextPreference><EditTextPreference android:dialogTitle="@string/label_lengths_cat" android:defaultValue="135" android:summary="@string/summary_lengths" android:title="@string/label_lengths_cat" android:key="@string/key_lengths_three"></EditTextPreference>
+		android:summary="@string/summary_lengths">
+		<EditTextPreference android:dialogTitle="@string/label_lengths_cat"
+			android:key="@string/key_lengths_one" android:defaultValue="50"
+			android:title="@string/label_lengths_cat" android:summary="@string/summary_lengths"
+			android:numeric="integer"></EditTextPreference>
+		<EditTextPreference android:dialogTitle="@string/label_lengths_cat"
+			android:key="@string/key_lengths_two" android:defaultValue="90"
+			android:title="@string/label_lengths_cat" android:summary="@string/summary_lengths"
+			android:numeric="integer"></EditTextPreference>
+		<EditTextPreference android:dialogTitle="@string/label_lengths_cat"
+			android:defaultValue="135" android:summary="@string/summary_lengths"
+			android:title="@string/label_lengths_cat" android:key="@string/key_lengths_three"
+			android:numeric="integer"></EditTextPreference>
 	</PreferenceCategory>
 </PreferenceScreen>
