@@ -13,7 +13,7 @@ import android.view.WindowManager;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import java.util.TreeSet;
-
+import android.view.Display;
 
 public class ViewFinderActivity extends Activity implements OnSharedPreferenceChangeListener{
     /** Called when the activity is first created. */
@@ -39,6 +39,9 @@ public class ViewFinderActivity extends Activity implements OnSharedPreferenceCh
 	public void onResume()
 	{
 		super.onResume();
+		Display display = getWindowManager().getDefaultDisplay(); 
+		
+		mViewFinderOverlay.setScreenSize(display.getWidth(), display.getHeight());
 		this.updateOverlayData();
 	}
 	

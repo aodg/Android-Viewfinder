@@ -17,21 +17,25 @@ public class ViewFinderOverlay extends View{
 	TreeSet<Float> mFocalLengths;
 	Float mBaseLength;
 	List<Rect> mRectangles;
+	Context mContext;
+	int mWidth = 0;
+	int mHeight = 0;
 	
 	
 	public ViewFinderOverlay(Context context) { 
          super(context); 
-         this.init();
+         this.init(context);
    } 
 	
 	public ViewFinderOverlay (Context context,AttributeSet attrs)
 	{
 		super(context,attrs);
-		this.init();
+		this.init(context);
 	}
 	
-	private void init()
+	private void init(Context pContext)
 	{
+		mContext=pContext;
 		mFocalLengths = new TreeSet<Float>();
 		mBaseLength = new Float(1.0); 
 		mRectangles = new ArrayList<Rect>();
@@ -59,10 +63,16 @@ public class ViewFinderOverlay extends View{
 		updateDrawables();
 	}
 	
+	public void setScreenSize(int width, int height)
+	{
+		mWidth = width;
+		mHeight = height;
+	}
+	
 	private void updateDrawables()
 	{
-		float tW = this.getWidth();
-		float tH = this.getHeight();
+		int tW = mWidth;
+		int tH = mHeight;
 		double tRatio;
 		Iterator<Float> tIterator = mFocalLengths.iterator();
 		while (tIterator.hasNext())
@@ -75,7 +85,7 @@ public class ViewFinderOverlay extends View{
 			Rect tRect = new Rect((int)(tW - measurementsX) / 2,
 									(int)(tH - measurementsY) / 2,
 									(int)(tW + measurementsX) / 2,
-									(int)(tW + measurementsY) / 2);
+									(int)(tH + measurementsY) / 2);
 			mRectangles.add(tRect);
 		}
 		
@@ -86,13 +96,13 @@ public class ViewFinderOverlay extends View{
            // TODO Auto-generated method stub 
            super.onDraw(canvas); 
            Paint paint = new Paint(); 
-           paint.setStrokeWidth(2);
+           paint.setStrokeWidth(3);
            paint.setStyle(Paint.Style.STROKE); 
-           paint.setColor(Color.BLACK); 
-           int destIdx = mRectangles.size();
-           for ( int i = 0 ; i < destIdx ; i++)
+           paint.setARGB(255, 255, 0, 0);
+           Iterator<Rect> tIterator = mRectangles.iterator();
+           while (tIterator.hasNext())
            {
-        	   Rect tRect = mRectangles.get(i);
+        	   Rect tRect = tIterator.next();
         	   canvas.drawRect(tRect,paint);
            }
    } 
