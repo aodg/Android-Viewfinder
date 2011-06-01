@@ -7,7 +7,12 @@ import android.graphics.Paint;
 import android.graphics.Color;
 import android.util.AttributeSet;
 
-public class ViewFinderOverlay extends View {
+import java.util.TreeSet;
+
+public class ViewFinderOverlay extends View{
+	TreeSet<Integer> mFocalLengths;
+	Integer baseLength;
+	
 	public ViewFinderOverlay(Context context) { 
          super(context); 
            // TODO Auto-generated constructor stub 
