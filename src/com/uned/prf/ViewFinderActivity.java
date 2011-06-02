@@ -19,7 +19,7 @@ public class ViewFinderActivity extends Activity implements OnSharedPreferenceCh
     /** Called when the activity is first created. */
     CameraPreview mCameraPreview;
     ViewFinderOverlay mViewFinderOverlay;
-	double [] arrayRatios = new double[]{0.0,2.0/3.0,0.75,0.80,1.0};
+	double [] arrayRatios = new double[]{0.0,9.0/16.0,2.0/3.0,0.75,0.80,1.0};
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

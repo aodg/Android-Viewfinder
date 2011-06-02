@@ -47,17 +47,18 @@ public class ViewFinderOverlay extends View{
 		int baseWidth = 0;
 		int baseHeight = 0;
 		double tRatio = b/a;
-		if (tRatio < mRatio) // What we want is less  pano?
-		{
-			mVerticalIsReference = true;
-			baseHeight = mHeight;
-			baseWidth = (int)	(mHeight * mRatio);
-		}
-		else
+		// Este if est‡ mal. Queremos saber en quŽ direcci—n tenemos que mirar. 
+		if (tRatio > mRatio) 
 		{
 			mVerticalIsReference = false;
 			baseWidth = mWidth;
-			baseHeight = (int) (mWidth* mRatio);
+			baseHeight = (int)	(baseWidth * mRatio);
+		}
+		else
+		{
+			mVerticalIsReference = true;
+			baseHeight = mHeight;
+			baseWidth = (int) (baseHeight * 1/mRatio);
 		}
 		Rect tRect = new Rect((int)(mWidth - baseWidth) / 2,
 									(int)(mHeight - baseHeight) / 2,
@@ -75,22 +76,15 @@ public class ViewFinderOverlay extends View{
 			int tWidth;
 			int tHeight;
 			float tRatio = (float)mBaseLength.getLength() / (float)pLength ;
-			if (mVerticalIsReference)
-			{
-				tHeight = (int)((float)mHeight * tRatio);
-				tWidth = (int)(tHeight * mRatio);
-			}
-			else
-			{
-				tWidth = (int)((float)mWidth * tRatio);
-				tHeight = (int)(tWidth * mRatio);
-			}
+			Rect tRect = mBaseLength.getRect();
+			tHeight = (int)(tRect.height() * Math.sqrt(tRatio));
+			tWidth = (int)(tRect.width() * Math.sqrt(tRatio));
 			
-			Rect tRect = new Rect((int)(mWidth - tWidth) / 2,
+			Rect tRect2 = new Rect((int)(mWidth - tWidth) / 2,
 									(int)(mHeight - tHeight) / 2,
 									(int)(mWidth + tWidth) / 2,
 									(int)(mHeight + tHeight) / 2);
-			mRectangles.add(new MyFocalLengthRect(tRect,pLength));
+			mRectangles.add(new MyFocalLengthRect(tRect2,pLength));
 			}
 	}
 	
@@ -134,11 +128,11 @@ public class ViewFinderOverlay extends View{
            paint.setStrokeWidth(3);
             
            paint.setARGB(255, 255, 0, 0);
-           paint.setTextSize(15 * mContext.getResources().getDisplayMetrics().density + 0.5f);
+           paint.setTextSize(12 * mContext.getResources().getDisplayMetrics().density + 0.5f);
            paint.setStyle(Paint.Style.STROKE);
            canvas.drawRect(mBaseLength.getRect(),paint);
            paint.setStyle(Paint.Style.FILL);
-           canvas.drawText(mBaseLength.getLengthString(), mBaseLength.getRect().left+5, mBaseLength.getRect().bottom+5, paint);
+           canvas.drawText(mBaseLength.getLengthString(), mBaseLength.getRect().left+5, mBaseLength.getRect().bottom-5, paint);
            
            Iterator<MyFocalLengthRect> tIterator = mRectangles.iterator();
            while (tIterator.hasNext())
@@ -147,7 +141,7 @@ public class ViewFinderOverlay extends View{
         	   paint.setStyle(Paint.Style.STROKE);
         	   canvas.drawRect(tRect.getRect(),paint);
         	   paint.setStyle(Paint.Style.FILL);
-        	   canvas.drawText(tRect.getLengthString(), tRect.getRect().left+5, tRect.getRect().bottom+5, paint);    
+        	   canvas.drawText(tRect.getLengthString(), tRect.getRect().left+5, tRect.getRect().bottom-5, paint);    
            }
    } 
  
