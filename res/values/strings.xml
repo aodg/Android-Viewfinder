@@ -9,8 +9,12 @@
     <string name="label_lengths_cat">Marcas a mostrar (mm)</string>
     <string name="key_base_length">base_length_key</string>
     <string name="key_lengths_one">length_one_key</string>
+    <string name="key_ratio">aspect_ratio</string>
     <string name="key_lengths_two">length_two_key</string>
     <string name="key_lengths_three">length_three_key</string>
     <string name="summary_base_length">La longitud focal base a la que es equivalente la cámara de su móvil (por ejemplo, en paso universal rondará los 35mm)</string>
 	<string name="summary_lengths">Longitudes focales de las marcas que se mostraran en pantalla.</string>
+	<string name="label_preference_aspect_ratio">Relación de aspecto</string>
+	<string name="label_category_camera_setup">Configuración de la cámara</string>
+<string name="ratio_choose_title">Elija una relación</string>
 </resources>

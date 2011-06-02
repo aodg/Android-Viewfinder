@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-	<EditTextPreference android:key="@string/key_base_length"
-		android:defaultValue="35" android:dialogTitle="@string/label_base_length_cat"
-		android:summary="@string/summary_base_length" android:title="@string/label_base_length_cat"
-		android:numeric="integer"></EditTextPreference>
-
 	<PreferenceCategory android:title="@string/label_lengths_cat"
 		android:summary="@string/summary_lengths">
+		<EditTextPreference android:key="@string/key_base_length"
+			android:defaultValue="35" android:dialogTitle="@string/label_base_length_cat"
+			android:summary="@string/summary_base_length" android:title="@string/label_base_length_cat"
+			android:numeric="integer"></EditTextPreference>
 		<EditTextPreference android:dialogTitle="@string/label_lengths_cat"
 			android:key="@string/key_lengths_one" android:defaultValue="50"
 			android:title="@string/label_lengths_cat" android:summary="@string/summary_lengths"
@@ -20,4 +19,14 @@
 			android:title="@string/label_lengths_cat" android:key="@string/key_lengths_three"
 			android:numeric="integer"></EditTextPreference>
 	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/label_category_camera_setup"
+		android:summary="">
+		<ListPreference android:key="@string/key_ratio"
+			android:title="@string/label_preference_aspect_ratio"
+			android:entries="@array/array_ratio_keys" android:entryValues="@array/array_ratio_values"
+			android:dialogTitle="@string/ratio_choose_title" android:persistent="true"
+			android:defaultValue="0"/>
+	</PreferenceCategory>
+
 </PreferenceScreen>
+

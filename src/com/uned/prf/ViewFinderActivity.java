@@ -19,7 +19,7 @@ public class ViewFinderActivity extends Activity implements OnSharedPreferenceCh
     /** Called when the activity is first created. */
     CameraPreview mCameraPreview;
     ViewFinderOverlay mViewFinderOverlay;
-	
+	double [] arrayRatios = new double[]{0.0,2.0/3.0,0.75,0.80,1.0};
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +29,7 @@ public class ViewFinderActivity extends Activity implements OnSharedPreferenceCh
         setContentView(R.layout.main);
         mCameraPreview = (CameraPreview)this.findViewById(R.id.cameraPreview);
         mViewFinderOverlay = (ViewFinderOverlay)this.findViewById(R.id.cameraOverlay);
+        
     }
     
 	public void onPause()
@@ -38,19 +39,19 @@ public class ViewFinderActivity extends Activity implements OnSharedPreferenceCh
 	
 	public void onResume()
 	{
-		super.onResume();
-		Display display = getWindowManager().getDefaultDisplay(); 
 		
-		mViewFinderOverlay.setScreenSize(display.getWidth(), display.getHeight());
+		super.onResume();
 		this.updateOverlayData();
 	}
 	
 	private void updateOverlayData()
 	{
+		Display display = getWindowManager().getDefaultDisplay(); 
+        mViewFinderOverlay.setScreenSize(display.getWidth(), display.getHeight());
 		// Send base length and List / Set of lengths to overlay
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-		
-		int base,len1,len2,len3;
+		double desiredRatio = 1.0;
+		int base,len1,len2,len3,ratioIdx;
 		String value;
 		value = prefs.getString(getString(R.string.key_base_length), null);
 		base = (value == null ? 35 : Integer.valueOf(value));
@@ -60,9 +61,12 @@ public class ViewFinderActivity extends Activity implements OnSharedPreferenceCh
 		len2 = (value == null ? 90 : Integer.valueOf(value));
 		value = prefs.getString(getString(R.string.key_lengths_three), null);
 		len3 = (value == null ? 150 : Integer.valueOf(value));
+		value = prefs.getString(getString(R.string.key_ratio), null);
+		ratioIdx = (value == null ? 0 : Integer.valueOf(value));
+		desiredRatio = arrayRatios[ratioIdx];
 		
+		mViewFinderOverlay.setDesiredRatio(desiredRatio);
 		mViewFinderOverlay.setBaseLength(base);
-		mViewFinderOverlay.clearLengths();
 		mViewFinderOverlay.addLength(len1);
 		mViewFinderOverlay.addLength(len2);
 		mViewFinderOverlay.addLength(len3);
