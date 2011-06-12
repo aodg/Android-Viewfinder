@@ -1,0 +1,6 @@
+Android Viewfinder
+------------------
+
+This is a little, simple and (for now) badly written app that shows a camera preview together with marks indicating the coverage of various configurable focal lengths. 
+
+The initial code was written as a final asignment for a course at UNED, Spanish National Distance University, by me (aodg @ github)
