@@ -5,12 +5,12 @@
     android:layout_height="fill_parent"
     android:background = "#00000001"
     >
-    <com.uned.prf.CameraPreview xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.blosoft.viewfinder.CameraPreview xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/cameraPreview"
     android:layout_width="wrap_content" 
     android:layout_height="wrap_content"
     />
-    <com.uned.prf.ViewFinderOverlay xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.blosoft.viewfinder.ViewFinderOverlay xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/cameraOverlay"
     android:layout_width="fill_parent" 
     android:layout_height="fill_parent"

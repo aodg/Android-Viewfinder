@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.uned.prf"
-      android:versionCode="5"
-      android:versionName="0.5b">
+      package="com.blosoft.viewfinder"
+      android:versionCode="7"
+      android:versionName="0.9b">
 	
 	<uses-sdk android:minSdkVersion="7" />
 
     <application android:icon="@drawable/icon" android:label="@string/app_name">
-        <activity android:name=".ViewFinderActivity"
+        <activity android:name="ViewFinderActivity"
                   android:label="@string/app_name" android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -15,9 +15,9 @@
             </intent-filter>
         </activity>
 
-		<activity android:name="com.uned.prf.SettingsActivity">          
+		<activity android:name="SettingsActivity">          
         </activity>
-        <activity android:name="AboutActivity">
+		<activity android:name="AboutActivity">
         </activity>
         
         <!-- Still not, but maybe in the future <uses-library android:name="com.google.android.maps" /> -->

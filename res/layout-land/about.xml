@@ -10,6 +10,12 @@
     		   android:layout_width="wrap_content" 
     		   android:src="@drawable/imagen">
     </ImageView> --> 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="10dip"
+    android:gravity="center"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
     <TextView android:layout_width="wrap_content" 
     		  android:layout_height="wrap_content"    		  
     		  android:text="@string/label_nombre" 
@@ -23,5 +29,5 @@
     		  android:text="@string/label_mo_codigo"
     		  android:textSize="14dip">
     </TextView>
-    
+    </LinearLayout>
 </LinearLayout>

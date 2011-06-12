@@ -1,4 +1,4 @@
-package com.uned.prf;
+package com.blosoft.viewfinder;
 
 import java.io.IOException;
 import java.util.List;

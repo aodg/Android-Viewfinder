@@ -1,4 +1,4 @@
-package com.uned.prf;
+package com.blosoft.viewfinder;
 
 import android.app.Activity;
 import android.os.Bundle;

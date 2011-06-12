@@ -8,14 +8,14 @@
 			android:numeric="integer"></EditTextPreference>
 		<EditTextPreference android:dialogTitle="@string/label_lengths_cat"
 			android:key="@string/key_lengths_one" android:defaultValue="50"
-			android:title="@string/label_lengths_cat" android:summary="@string/summary_lengths"
+			android:title="@string/label_lengths_cat" android:summary=""
 			android:numeric="integer"></EditTextPreference>
 		<EditTextPreference android:dialogTitle="@string/label_lengths_cat"
 			android:key="@string/key_lengths_two" android:defaultValue="90"
-			android:title="@string/label_lengths_cat" android:summary="@string/summary_lengths"
+			android:title="@string/label_lengths_cat" android:summary=""
 			android:numeric="integer"></EditTextPreference>
 		<EditTextPreference android:dialogTitle="@string/label_lengths_cat"
-			android:defaultValue="135" android:summary="@string/summary_lengths"
+			android:defaultValue="135" android:summary=""
 			android:title="@string/label_lengths_cat" android:key="@string/key_lengths_three"
 			android:numeric="integer"></EditTextPreference>
 	</PreferenceCategory>

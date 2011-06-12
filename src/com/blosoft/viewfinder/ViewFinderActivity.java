@@ -1,5 +1,6 @@
-package com.uned.prf;
+package com.blosoft.viewfinder;
 
+import android.view.View.OnTouchListener;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,18 +8,20 @@ import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.util.DisplayMetrics;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import java.util.TreeSet;
+
 import android.view.Display;
 
-public class ViewFinderActivity extends Activity implements OnSharedPreferenceChangeListener{
+public class ViewFinderActivity extends Activity implements OnSharedPreferenceChangeListener, OnTouchListener{
     /** Called when the activity is first created. */
     CameraPreview mCameraPreview;
     ViewFinderOverlay mViewFinderOverlay;
+    
 	double [] arrayRatios = new double[]{0.0,9.0/16.0,2.0/3.0,0.75,0.80,1.0};
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,7 @@ public class ViewFinderActivity extends Activity implements OnSharedPreferenceCh
         setContentView(R.layout.main);
         mCameraPreview = (CameraPreview)this.findViewById(R.id.cameraPreview);
         mViewFinderOverlay = (ViewFinderOverlay)this.findViewById(R.id.cameraOverlay);
-        
+        mViewFinderOverlay.setOnTouchListener(this);
     }
     
 	public void onPause()
@@ -111,4 +114,16 @@ public class ViewFinderActivity extends Activity implements OnSharedPreferenceCh
     	// Take care of the changed preferences;
     	this.updateOverlayData();
     }
+
+	@Override
+	public boolean onTouch(View v, MotionEvent event) {
+		if (v.equals(mViewFinderOverlay))
+		{
+			if (event.getAction() == MotionEvent.ACTION_DOWN)
+			{
+				mViewFinderOverlay.choiceAtPoint((int)event.getX(),(int)event.getY());
+			}
+		}
+		return false;
+	}
 }
